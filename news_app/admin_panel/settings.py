@@ -38,6 +38,10 @@ ALLOWED_HOSTS = [
     'localhost'
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.murman-zan-api.site'
+]
+
 # Application definition
 
 INSTALLED_APPS = [

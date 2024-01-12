@@ -6,7 +6,11 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from admin_panel.settings import BASE_DIR
 from bs4 import BeautifulSoup
+from dotenv import load_dotenv
+import os
 
+
+load_dotenv()
 
 # class NewsApiView(generics.ListAPIView):
 #     queryset = News.objects.all()
@@ -17,7 +21,7 @@ QUANTITY_NEWS_ON_ONE_PAGE = 3
 class NewsApiView(APIView):
     def get(self, request):
 
-        news_list = News.objects.all().values()
+        news_list = News.objects.all().order_by('-datePublished').values()
 
         news_quantity = len(news_list)
 
@@ -47,7 +51,7 @@ class NewsApiView(APIView):
             print(date_published)
             data.append({
                 "id": n["id"],
-                "photo_preview_news": 'http://127.0.0.1:8000/media/' + n["photo_preview_news"],
+                "photo_preview_news": f'{os.getenv("MEDIA_PATH")}' + n["photo_preview_news"],
                 "title": n["title"],
                 "shortDescription": n["shortDescription"],
                 "datePublished": date_published,
@@ -73,7 +77,7 @@ class NewsDetail(APIView):
         news_detail = {}
         for n in news_list:
             if n["id"] == pk:
-                n["photo_preview_news"] = 'http://127.0.0.1:8000/media/' + n["photo_preview_news"]
+                n["photo_preview_news"] = f'{os.getenv("MEDIA_PATH")}' + n["photo_preview_news"]
                 n["datePublished"] = n["datePublished"].strftime("%d.%m.%Y")
                 news_detail = n
                 break
@@ -81,7 +85,7 @@ class NewsDetail(APIView):
         hmtl_textNews = BeautifulSoup(news_detail["textNews"])
 
         for img in hmtl_textNews.find_all('img'):
-            img['src'] = 'http://127.0.0.1:8000' + img['src']
+            img['src'] = f'{os.getenv("DOMAIN")}' + img['src']
 
         news_detail['textNews'] = str(hmtl_textNews)
         
