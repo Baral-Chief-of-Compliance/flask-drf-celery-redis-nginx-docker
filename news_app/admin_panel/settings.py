@@ -35,7 +35,7 @@ DEBUG = False
 # ]
 
 ALLOWED_HOSTS = [
-    'localhost'
+    'murman-zan-api.site'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
