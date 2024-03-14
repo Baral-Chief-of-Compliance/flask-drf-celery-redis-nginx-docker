@@ -40,4 +40,4 @@ services:
     ports:
       - 80:80
     volumes:
-      -./static/:/home/app/staticfiels
+      - ./static/:/home/app/staticfiels
