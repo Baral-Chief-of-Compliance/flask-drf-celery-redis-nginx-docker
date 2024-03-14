@@ -1,4 +1,4 @@
 FROM nginx:alpine
 
-RUN mkdir -p /home/app/staticfiels
+RUN mkdir -p /home/app/backend
 COPY ./conf.d /etc/nginx/conf.d

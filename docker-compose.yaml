@@ -41,3 +41,4 @@ services:
       - 80:80
     volumes:
       - ./static/:/home/app/staticfiels
+      - ./news_app_project/:/home/app/backend

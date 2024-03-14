@@ -34,13 +34,13 @@ DEBUG = False
 #     'sparlex-tip-top.site'
 # ]
 
-ALLOWED_HOSTS = [
-    'murman-zan-api.site'
-]
+ALLOWED_HOSTS = ['*']
+
 
 CSRF_TRUSTED_ORIGINS = [
     'https://*.murman-zan-api.site'
 ]
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
@@ -152,7 +152,7 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATIC_URL = 'static/'
+STATIC_URL = 'staticDjango/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiels')
 
 MEDIA_URL = '/media/'
