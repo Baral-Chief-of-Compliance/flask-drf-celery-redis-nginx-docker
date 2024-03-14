@@ -2,18 +2,18 @@ version: "3.7"
 services:
 
   news_app:
-    build: './news_app'
+    build: './news_app_project'
     restart: always
     volumes:
-      - ./news_app/:/usr/src/app/
-      - static_files:/usr/src/app/staticfiels
-      - media_fiels:/usr/src/app/media
+      - ./news_app_project/:/home/djangoApp
     ports:
       - 8001:8001
 
   flask_app:
     build: './flask_app'
     restart: always
+    volumes:
+      - ./flask_app/:/home/flaskApp
     ports:
       - 8000:8000
 
@@ -40,11 +40,4 @@ services:
     ports:
       - 80:80
     volumes:
-      - ./nginx/conf.d/:/etc/nginx/conf.d/
-      - ./static:/home/app/staticfiles/
-      - static_files:/home/app/staticfiels
-      - media_fiels:/home/app/media
-
-volumes:
-  static_files: 
-  media_fiels: 
+      -./static/:/home/app/staticfiels

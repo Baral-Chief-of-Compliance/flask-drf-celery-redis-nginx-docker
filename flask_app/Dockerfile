@@ -1,10 +1,10 @@
 FROM python:3.10-slim-bullseye
 
-RUN mkdir wd
+RUN mkdir -p /home/flaskApp
 
-WORKDIR wd
+WORKDIR /home/flaskApp
 
-COPY . .
+COPY ./requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 

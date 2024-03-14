@@ -1,9 +1,10 @@
 FROM python:3.10-slim-bullseye
 
-WORKDIR /usr/src/app/
 
-COPY . .
+RUN mkdir -p /home/djangoApp
+WORKDIR /home/djangoApp
 
+COPY ./requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
