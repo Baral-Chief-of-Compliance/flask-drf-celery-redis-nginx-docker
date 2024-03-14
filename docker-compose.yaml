@@ -5,7 +5,7 @@ services:
     build: './news_app_project'
     restart: always
     volumes:
-      - ./news_app_project/:/home/djangoApp
+      - ./news_app_project/news_app/:/home/djangoApp
     ports:
       - 8001:8001
 
