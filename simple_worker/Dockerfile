@@ -4,7 +4,7 @@ RUN mkdir wd
 
 WORKDIR wd
 
-COPY .env tasks.py requirements.txt soiskatel.py employer.py .
+COPY . .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
